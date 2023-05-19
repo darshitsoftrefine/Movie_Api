@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:api_future/second_screen.dart';
 import 'package:flutter/gestures.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:api_future/model.dart';
 import 'package:flutter/material.dart';
-
-import 'movie_model.dart';
 
 class MovieMainScreen extends StatefulWidget {
   const MovieMainScreen({Key? key}) : super(key: key);
@@ -18,14 +17,6 @@ class MovieMainScreen extends StatefulWidget {
 class _MovieMainScreenState extends State<MovieMainScreen> {
 
   List<Search> samplePosts = [];
-
-  // loadUser() async {
-  //   final results = await Movie().getUser;
-  //   print(results.length);
-  //   results.forEach((element){
-  //     print(element.);
-  //   });
-  // }
 
   @override
   void initState() {
@@ -40,16 +31,16 @@ class _MovieMainScreenState extends State<MovieMainScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white,
-        leading: CircleAvatar(
+        leading: const CircleAvatar(
           backgroundColor: Colors.black,
           radius: 35,
           backgroundImage: NetworkImage('https://deadline.com/wp-content/uploads/2022/08/Netflix_Symbol_logo.jpg?w=1024'),
         ),
-        title: Text("NETFLIX", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red, fontSize: 30),),
+        title: const Text("NETFLIX", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red, fontSize: 30),),
         actions: <Widget>[
-          IconButton(onPressed: (){}, icon: Icon(Icons.search, size: 30, color: Colors.black,)),
-          SizedBox(width: 8,),
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications, size: 30, color: Colors.black,)),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.search, size: 30, color: Colors.black,)),
+          const SizedBox(width: 8,),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.notifications, size: 30, color: Colors.black,)),
         ],
       ),
       body: Padding(
@@ -57,9 +48,9 @@ class _MovieMainScreenState extends State<MovieMainScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 20,),
-            Text("Popular on Netflix", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
+            const Text("Popular on Netflix", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+            const SizedBox(height: 20,),
             FutureBuilder(
               future: getData(),
               builder: (context, snapshot) {
@@ -69,9 +60,9 @@ class _MovieMainScreenState extends State<MovieMainScreen> {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                           itemCount: samplePosts.length,
                           itemBuilder: (_, index) {
                             return Column(
@@ -83,8 +74,7 @@ class _MovieMainScreenState extends State<MovieMainScreen> {
                                       MaterialPageRoute(builder: (context) => Second_Screen(index: index)),
                                     );
                             },
-                                  child: Container(
-                                    color: Colors.lightBlue,
+                                  child: SizedBox(
                                     width: 130,
                                     height: 130,
                                     child: Image.network('${samplePosts[index].poster}'),
@@ -92,7 +82,7 @@ class _MovieMainScreenState extends State<MovieMainScreen> {
                                 ),
                                 Container(
                                   alignment: Alignment.center,
-                                  child: Text(samplePosts[index].title!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),),
+                                  child: Text(samplePosts[index].title!, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),),
                                 ),
                                 
                               ],

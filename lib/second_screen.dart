@@ -1,10 +1,13 @@
 
+// ignore_for_file: camel_case_types
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 import 'model.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class Second_Screen extends StatelessWidget {
   Second_Screen({Key? key, required this.index}) : super(key: key);
   final int index;
@@ -17,7 +20,7 @@ class Second_Screen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
         elevation: 0.0,
       ),
@@ -33,43 +36,42 @@ class Second_Screen extends StatelessWidget {
                       if(snapshot.hasData){
                         return Column(
                                   children: [
-                                    Container(
-                                      color: Colors.lightBlue,
+                                    SizedBox(
                                       width: 300,
                                       height: 300,
                                       child: Image.network('${samplePosts[index].poster}'),
                                     ),
-                                    SizedBox(height: 20,),
+                                    const SizedBox(height: 20,),
                                     Row(
                                       children: [
                                           Flexible(
                                             child: Text(samplePosts[index].title!
-                                              ,style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),
+                                              ,style: const TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),
                                         ),
                                           ),
 
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.notifications), color: Colors.white,),
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.share), color: Colors.white,),
+                                    IconButton(onPressed: (){}, icon: const Icon(Icons.notifications), color: Colors.white,),
+                                    IconButton(onPressed: (){}, icon: const Icon(Icons.share), color: Colors.white,),
 
                                   ],
                       ),
-                                    SizedBox(height: 20,),
+                                    const SizedBox(height: 20,),
                                     Container(
                                       alignment: Alignment.topLeft,
-                                      child: Text("Released in "+ samplePosts[index].year!,
-                                        style: TextStyle(color: Colors.white,fontSize: 14, fontWeight: FontWeight.bold),
+                                      child: Text("Released in ${samplePosts[index].year!}",
+                                        style: const TextStyle(color: Colors.white,fontSize: 14, fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.start,
                                       ),
                                     ),
-                                    SizedBox(height: 20,),
+                                    const SizedBox(height: 20,),
                                     Container(
                                       alignment: Alignment.topLeft,
-                                      child: Text("Imdb Rating: "+samplePosts[index].imdbID!, style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 14),),
+                                      child: Text("Imdb Rating: ${samplePosts[index].imdbID!}", style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 14),),
                                     ),
-                                    SizedBox(height: 20,),
+                                    const SizedBox(height: 20,),
                                     Container(
                                       alignment: Alignment.topLeft,
-                                      child: Text("The Type of it is : "+samplePosts[index].type!, style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 14),),
+                                      child: Text("The Type of it is : ${samplePosts[index].type!}", style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 14),),
                                     )
                       ]
                                 );
